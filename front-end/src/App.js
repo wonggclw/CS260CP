@@ -45,10 +45,10 @@ function App() {
     setProblem("");
   }
 
-  const deleteTicket = async(ticket) => {
-    await deleteOneTicket(ticket);
-    fetchTickets();
-  }
+  // const deleteTicket = async(ticket) => {
+  //   await deleteOneTicket(ticket);
+  //   fetchTickets();
+  // }
 
   // render results
   return (
@@ -78,7 +78,7 @@ function App() {
             <p>{ticket.start}</p>
             <p>{ticket.end}</p>
           </div>
-          <button onClick={e => deleteTicket(ticket)}>Delete</button>
+          {/* <button onClick={e => deleteTicket(ticket)}>Delete</button> */}
         </div>
       ))}     
     </div>
