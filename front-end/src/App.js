@@ -6,8 +6,11 @@ function App() {
   // setup state
   const [tickets, setTickets] = useState([]);
   const [error, setError] = useState("");
-  const [name, setName] = useState("");
-  const [problem, setProblem] = useState("");
+  const [text, setText] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+  // const [name, setName] = useState("");
+  // const [problem, setProblem] = useState("");
 
   const fetchTickets = async() => {
     try {      
@@ -19,7 +22,7 @@ function App() {
   }
   const createTicket = async() => {
     try {
-      await axios.post("/api/events", {name: name, problem: problem});
+      await axios.post("/api/events", {text: text, start: start, end: end});
     } catch(error) {
       setError("error adding a ticket: " + error);
     }
@@ -41,8 +44,9 @@ function App() {
     e.preventDefault();
     await createTicket();
     fetchTickets();
-    setName("");
-    setProblem("");
+    setText("");
+    setStart("");
+    setEnd("");
   }
 
   // const deleteTicket = async(ticket) => {
@@ -59,13 +63,15 @@ function App() {
         <div>
           <label>
             Name:
-            <input type="text" value={name} onChange={e => setName(e.target.value)} />
+            <input type="text" value={text} onChange={e => setText(e.target.value)} />
           </label>
         </div>
         <div>
           <label>
-            Problem:
-            <textarea value={problem} onChange={e=>setProblem(e.target.value)}></textarea>
+            Start:
+            <textarea value={start} onChange={e=>setStart(e.target.value)}></textarea>
+            End:
+            <textarea value={start} onChange={e=>setStart(e.target.value)}></textarea>
           </label>
         </div>
         <input type="submit" value="Submit" />
